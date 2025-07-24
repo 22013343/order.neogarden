@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neo Garden Menu Clone</title>
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar styles */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+    }
+
+    .logo a {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-menu li {
+      position: relative;
+    }
+
+    .nav-menu li a {
+      text-decoration: none;
+      color: #333;
+      padding: 0.5rem 1rem;
+      display: block;
+    }
+
+    .order-btn {
+      background: #007BFF;
+      color: #fff !important;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+    }
+
+    .has-dropdown:hover .dropdown,
+    .has-dropdown:focus-within .dropdown {
+      display: block;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 1000;
+      list-style: none;
+      min-width: 200px;
+    }
+
+    .dropdown li a {
+      padding: 0.5rem 1rem;
+      white-space: nowrap;
+    }
+
+    /* Responsive styling */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        display: none;
+        padding: 1rem 0;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .dropdown {
+        position: static;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="/">Neo Garden</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+    <ul class="nav-menu">
+      <li><a href="/">Home</a></li>
+      <li class="has-dropdown">
+        <a href="/menus">Menus</a>
+        <ul class="dropdown">
+          <li><a href="/menus/mini-party">Mini Party Sets</a></li>
+          <li><a href="/menus/regular-buffet">Regular Buffet</a></li>
+          <li><a href="/menus/mini-buffet">Mini Buffet</a></li>
+          <li><a href="/menus/hotpot">Hotpot</a></li>
+          <li><a href="/menus/bento">Bento</a></li>
+        </ul>
+      </li>
+      <li><a href="/tingkat">Tingkat</a></li>
+      <li><a href="/promo">Promo</a></li>
+      <li class="has-dropdown">
+        <a href="#">Help</a>
+        <ul class="dropdown">
+          <li><a href="/help/tips">Celebration Tips</a></li>
+          <li><a href="/help/faq">FAQ</a></li>
+          <li><a href="/help/feedback">Feedback</a></li>
+          <li><a href="/help/contact">Contact Us</a></li>
+        </ul>
+      </li>
+      <li><a href="/order" class="order-btn">Order Now</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.querySelector('.nav-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+
+      toggleBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+
+      document.querySelectorAll('.has-dropdown > a').forEach(link => {
+        link.addEventListener('click', e => {
+          if (window.innerWidth < 769) {
+            e.preventDefault();
+            const dropdown = link.nextElementSibling;
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
