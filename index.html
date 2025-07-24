@@ -113,6 +113,84 @@
         position: static;
         box-shadow: none;
       }
+      
+      .hero {
+  background: #fff8f0;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.hero-img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.hero-text h2 {
+  color: #d11a2a;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text p {
+  max-width: 700px;
+  margin: auto;
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.see-more-btn {
+  display: inline-block;
+  background: #f7a500;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.cards-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  background: #fdfbf8;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  max-width: 300px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card h3 {
+  color: #e4002b;
+  margin: 1rem 0 0.5rem;
+}
+
+.card p {
+  padding: 0 1rem 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
     }
   </style>
 </head>
@@ -149,6 +227,40 @@
       <li><a href="order-now.html" class="order-btn">Order Now</a></li>
     </ul>
   </nav>
+  <!-- Hero Section: A Feast For The Nation -->
+<section class="hero">
+  <div class="hero-content">
+    <img src="Main Banner_Desktop.png" alt="Feast For The Nation Banner" class="hero-img">
+    <div class="hero-text">
+      <h2>A Feast For The Nation</h2>
+      <p>
+        As Singapore turns 60, we want to honour the families who’ve grown with us and the kitchens that have carried cherished recipes through time.
+        Join us in A Feast for the Nation. It’s a celebration of our 33-year journey with you through the generations.
+      </p>
+      <a href="sg60-mini-party-set.html" class="see-more-btn">See More</a>
+    </div>
+  </div>
+</section>
+
+<!-- Cards Section -->
+<section class="cards-section">
+  <div class="card">
+    <img src="https://www.neogarden.com.sg/images/home_menu_1.jpg" alt="Menus">
+    <h3>Neo’s Menus</h3>
+    <p>Check out all our catering menus, from buffets to mini party sets.</p>
+  </div>
+  <div class="card">
+    <img src="https://www.neogarden.com.sg/images/home_moments_2.jpg" alt="Moments">
+    <h3>Neo’s Moments</h3>
+    <p>See how our food creates unforgettable memories for families and friends.</p>
+  </div>
+  <div class="card">
+    <img src="https://www.neogarden.com.sg/images/home_tingkat_3.jpg" alt="Tingkat">
+    <h3>Neo’s Tingkat</h3>
+    <p>Fresh home-cooked meals delivered daily. Great for busy families.</p>
+  </div>
+</section>
+
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
