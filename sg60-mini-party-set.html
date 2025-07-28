@@ -2,207 +2,151 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>SG60 Mini Party Set - Neo Garden</title>
+  <title>SG60 Mini Party Set</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
       margin: 0;
-      background: #fff;
+      padding: 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
       color: #333;
     }
 
-    .top-bar {
+    .menu-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .menu-card {
+      position: relative;
+      width: 280px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       background: #fff;
-      padding: 1rem 1.5rem;
-      border-bottom: 1px solid #eee;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      transition: transform 0.3s ease;
     }
 
-    .top-bar .logo {
-      font-weight: bold;
-      font-size: 1.3rem;
-      color: #e4002b;
+    .menu-card:hover {
+      transform: translateY(-5px);
     }
 
-    .top-bar .menu a {
-      margin-left: 1.5rem;
-      text-decoration: none;
-      color: #666;
-    }
-
-    .breadcrumb {
-      padding: 0.5rem 1.5rem;
-      background: #f9f9f9;
-      font-size: 0.9rem;
-    }
-
-    .breadcrumb a {
-      color: #e4002b;
-      text-decoration: none;
-    }
-
-    .main-content {
-      padding: 2rem 1rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .main-content h1 {
-      color: #e4002b;
-      margin-bottom: 0.5rem;
-    }
-
-    .main-content p.description {
-      font-size: 1rem;
-      margin-bottom: 2rem;
-      color: #444;
-    }
-
-    .main-content img.hero {
+    .menu-card img {
       width: 100%;
-      border-radius: 8px;
-      margin-bottom: 2rem;
-    }
-
-    .section {
-      margin-bottom: 2rem;
-    }
-
-    .section h2 {
-      font-size: 1.1rem;
-      background: #e6f5fb;
-      padding: 0.75rem 1rem;
-      margin: 0;
-    }
-
-    .menu-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      background: #f8fbfd;
-      border: 1px solid #dfeff5;
-      margin-bottom: 1rem;
-      border-radius: 6px;
-    }
-
-    .menu-item img {
-      width: 160px;
-      height: 110px;
+      height: 200px;
       object-fit: cover;
-      border-radius: 4px;
+      display: block;
     }
 
     .menu-info {
-      flex: 1;
+      padding: 1rem;
     }
 
     .menu-info h3 {
-      margin: 0;
-      color: #e4002b;
-      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: #d11a2a;
     }
 
     .menu-info p {
       font-size: 0.9rem;
-      margin: 0.25rem 0;
-      color: #555;
-    }
-
-    .terms {
-      font-size: 0.8rem;
       color: #666;
-      margin-top: 0.25rem;
     }
 
-    @media (max-width: 600px) {
-      .menu-item {
-        flex-direction: column;
-        text-align: center;
-      }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      flex-direction: column;
+      text-align: center;
+    }
 
-      .menu-item img {
-        width: 100%;
-        height: auto;
-      }
+    .menu-card:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay a {
+      background: #f7a500;
+      color: #fff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <div class="top-bar">
-    <div class="logo">🦐 NEO GARDEN</div>
-    <div class="menu">
-      <a href="index.html">Home</a>
-      <a href="order-now.html">Order</a>
-      <a href="#">Login</a>
-    </div>
-  </div>
+  <h2>SG60 Mini Party Set</h2>
 
-  <div class="breadcrumb">
-    <a href="order-now.html">Menus</a> / SG60 MINI PARTY SET
-  </div>
+  <div class="menu-grid">
 
-  <div class="main-content">
-    <h1>SG60 MINI PARTY SET</h1>
-    <p class="description">
-      Throw a fuss-free feast with our Party Sets from just $99, perfect for parties of 10. Packed with crowd-pleasers like Signature Curry Chicken, they're great for gatherings or just a hearty family meal.
-    </p>
-
-    <img src="Main Banner_Desktop.png" class="hero" alt="Party Set Banner">
-
-    <!-- LOCAL FAVOURITES -->
-    <div class="section">
-      <h2>LOCAL FAVOURITES</h2>
-      <div class="menu-item">
-        <img src="Local Favourites.png" alt="Local Favourites">
-        <div class="menu-info">
-          <h3>4 courses | min 1 Set</h3>
-          <p>$99.00 &nbsp;&nbsp; | &nbsp;&nbsp; $107.91 w/GST</p>
-          <p class="terms">* Terms and Conditions apply</p>
-        </div>
+    <!-- Card 1 -->
+    <div class="menu-card">
+      <img src="Local Favourites.png" alt="Local Favourites">
+      <div class="overlay">
+        <div>Local Favourites</div>
+        <a href="local-favourites.html">Select Dishes</a>
+      </div>
+      <div class="menu-info">
+        <h3>Local Favourites</h3>
+        <p>$99.00 | 4 courses | min 1 Set</p>
       </div>
     </div>
 
-    <!-- SOMETHING SPECIAL -->
-    <div class="section">
-      <h2>SOMETHING SPECIAL</h2>
-      <div class="menu-item">
-        <img src="Something Special.png" alt="Something Special">
-        <div class="menu-info">
-          <h3>4 courses | min 1 Set</h3>
-          <p>$99.00 &nbsp;&nbsp; | &nbsp;&nbsp; $107.91 w/GST</p>
-          <p class="terms">* Terms and Conditions apply</p>
-        </div>
+    <!-- Card 2 -->
+    <div class="menu-card">
+      <img src="Something Special.png" alt="Something Special">
+      <div class="overlay">
+        <div>Something Special</div>
+        <a href="something-special.html">Select Dishes</a>
+      </div>
+      <div class="menu-info">
+        <h3>Something Special</h3>
+        <p>$99.00 | 4 courses | min 1 Set</p>
       </div>
     </div>
 
-    <!-- HOT AND SPICY -->
-    <div class="section">
-      <h2>HOT AND SPICY</h2>
-      <div class="menu-item">
-        <img src="Hot And Spicy.png" alt="Hot and Spicy">
-        <div class="menu-info">
-          <h3>4 courses | min 1 Set</h3>
-          <p>$99.00 &nbsp;&nbsp; | &nbsp;&nbsp; $107.91 w/GST</p>
-          <p class="terms">* Terms and Conditions apply</p>
-        </div>
+    <!-- Card 3 -->
+    <div class="menu-card">
+      <img src="Hot And Spicy.png" alt="Hot and Spicy">
+      <div class="overlay">
+        <div>Hot & Spicy</div>
+        <a href="hot-and-spicy.html">Select Dishes</a>
+      </div>
+      <div class="menu-info">
+        <h3>Hot & Spicy</h3>
+        <p>$99.00 | 4 courses | min 1 Set</p>
       </div>
     </div>
 
-    <!-- ALL DAY BREAKFAST -->
-    <div class="section">
-      <h2>ALL DAY BREAKFAST</h2>
-      <div class="menu-item">
-        <img src="All Day Breakfast.jpg" alt="All Day Breakfast">
-        <div class="menu-info">
-          <h3>5 courses | min 1 Set</h3>
-          <p>$99.00 &nbsp;&nbsp; | &nbsp;&nbsp; $107.91 w/GST</p>
-          <p class="terms">* Terms and Conditions apply</p>
-        </div>
+    <!-- Card 4 -->
+    <div class="menu-card">
+      <img src="All Day Breakfast.jpg" alt="All Day Breakfast">
+      <div class="overlay">
+        <div>All Day Breakfast</div>
+        <a href="all-day-breakfast.html">Select Dishes</a>
+      </div>
+      <div class="menu-info">
+        <h3>All Day Breakfast</h3>
+        <p>$99.00 | 4 courses | min 1 Set</p>
       </div>
     </div>
 
