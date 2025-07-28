@@ -1,0 +1,139 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+
+.menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Selection Panel (Left side) */
+.selection-panel {
+  width: 300px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.selection-panel h4 {
+  font-size: 0.9rem;
+  color: red;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 0.5rem;
+}
+
+.selection-panel img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.selection-panel p {
+  font-size: 0.85rem;
+  margin: 0.3rem 0;
+}
+
+.selection-panel .note {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.selection-panel button {
+  margin-top: 1rem;
+  padding: 0.4rem 0.8rem;
+  background: #eee;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+/* Menu Right Section */
+.menu-selection {
+  flex: 1;
+  min-width: 600px;
+}
+
+.menu-selection h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.menu-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual Menu Box */
+.menu-box {
+  background: #f5fbfe;
+  border: 1px solid #cde4ef;
+  padding: 1rem;
+  border-radius: 6px;
+  width: 300px;
+}
+
+.menu-box h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #004e77;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.controls input[type="number"] {
+  width: 40px;
+  padding: 0.2rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.controls button {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: #ffa500;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.controls button:nth-child(1),
+.controls button:nth-child(3) {
+  background: #ddd;
+  color: #333;
+}
+
+.menu-box ul {
+  padding-left: 1rem;
+  list-style: disc;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.next-btn {
+  padding: 0.6rem 1.2rem;
+  background: #ffa500;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
