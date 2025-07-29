@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Neo Garden</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background: #fff;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header .logo {
+      font-weight: bold;
+      color: #b00;
+    }
+
+    .hero {
+      padding: 2rem;
+      background: #fff;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 1rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .contact-left,
+    .contact-right {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .contact-left h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-left p {
+      margin: 0.4rem 0;
+    }
+
+    .contact-left p strong {
+      display: inline-block;
+      min-width: 90px;
+    }
+
+    .orange {
+      color: #f7941d;
+    }
+
+    .form-box {
+      background: #fff;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .form-box h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .form-box input[type="text"],
+    .form-box input[type="email"] {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .form-box button {
+      background-color: #f7941d;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #888;
+      background: #fff;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🍲 NEO GARDEN</div>
+  <nav>
+    <a href="stories.html">Stories</a> |
+    <a href="menus.html">Menus</a> |
+    <a href="tingkat.html">Tingkat</a> |
+    <a href="promo.html">Promo</a> |
+    <a href="help.html">Help</a> |
+    <a href="order-now.html" style="background:#f7941d; color:#fff; padding: 0.4rem 0.8rem; border-radius: 3px;">Order Now 🚚</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Contact</h1>
+  <p>Here are a few ways to get in touch with us</p>
+</section>
+
+<div class="container">
+  <!-- Contact Info -->
+  <div class="contact-left">
+    <h2>Neo Garden Catering Pte Ltd</h2>
+    <p><strong>Address:</strong> 30B Quality Rd, Singapore 618826</p>
+    <p><strong>Email:</strong> <span class="orange">enquiry@neogarden.com.sg</span></p>
+    <p><strong>Hotline:</strong> 6896 7757</p>
+    <p><strong>Call Center Operating Hours:</strong></p>
+    <p>Mon - Fri | 9:00am – 7:30pm</p>
+    <p>Sat - Sun | 9:00am – 7:00pm</p>
+  </div>
+
+  <!-- Subscription Form -->
+  <div class="contact-right">
+    <div class="form-box">
+      <h3><span class="orange">Sign up</span> for emails to receive updates and exclusive offers</h3>
+      <form>
+        <input type="email" placeholder="Email Address*" required />
+        <input type="text" placeholder="Name" required />
+        <button type="submit">Subscribe to Neo Garden</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Neo Garden Catering. All rights reserved.
+</footer>
+
+</body>
+</html>
