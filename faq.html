@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ - Neo Garden</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #fff;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+
+    .faq-column {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .faq-column h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #eee;
+      padding: 0.5rem 0;
+    }
+
+    .faq-question {
+      cursor: pointer;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      transition: transform 0.3s;
+    }
+
+    .faq-question.active::after {
+      content: '−';
+    }
+
+    .faq-answer {
+      display: none;
+      margin-top: 0.3rem;
+      padding-left: 1rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .faq-answer.open {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Column 1 -->
+  <div class="faq-column">
+    <h2>Catering Inquiries</h2>
+    <div class="faq-item">
+      <div class="faq-question">What is a Mini Buffet?</div>
+      <div class="faq-answer">A Mini Buffet is a compact meal set suitable for small groups, delivered in disposable trays without warmers or setup.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Are cutleries provided?</div>
+      <div class="faq-answer">Yes, disposable cutlery sets are provided based on your pax size.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Do you remove the trash from the venue?</div>
+      <div class="faq-answer">For regular buffets with setup, our staff will assist in basic cleanup including trash bag collection.</div>
+    </div>
+  </div>
+
+  <!-- Column 2 -->
+  <div class="faq-column">
+    <h2>Ordering Payment</h2>
+    <div class="faq-item">
+      <div class="faq-question">How can I place an order?</div>
+      <div class="faq-answer">Orders can be made online via our website or by calling our hotline. You will receive an email confirmation after placing your order.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can I make any last minute changes?</div>
+      <div class="faq-answer">Last-minute changes are subject to availability. We recommend notifying us at least 48 hours in advance.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How do I know if my order is processed?</div>
+      <div class="faq-answer">You’ll receive a confirmation email once your order is confirmed. If you don’t see it, check your spam folder or contact us.</div>
+    </div>
+  </div>
+
+  <!-- Column 3 -->
+  <div class="faq-column">
+    <h2>Delivery</h2>
+    <div class="faq-item">
+      <div class="faq-question">Do you deliver on Public Holidays?</div>
+      <div class="faq-answer">Yes, we do! However, slots may be limited and surcharges may apply. Book early to secure your slot.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">What is your earliest delivery time?</div>
+      <div class="faq-answer">Our deliveries typically start from 7:30 AM. Please check with us for exact timings based on your order type.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can I extend the collection time?</div>
+      <div class="faq-answer">Yes, you may request an extension but it's subject to approval. Please notify us at least 1 day before delivery.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      q.classList.toggle('active');
+      const answer = q.nextElementSibling;
+      answer.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
