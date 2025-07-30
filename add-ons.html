@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add-Ons Selection</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    .container { display: flex; gap: 30px; }
+    .selection-panel {
+      width: 300px;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+    .selection-panel h3 { margin-bottom: 10px; }
+    .selection-panel ul { list-style: none; padding-left: 0; }
+    .selection-panel li { margin: 5px 0; }
+    .add-on-box {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      width: 300px;
+    }
+    .add-on-box img {
+      max-width: 100%;
+      height: auto;
+    }
+    .add-btn { background-color: orange; color: white; border: none; padding: 5px 10px; cursor: pointer; }
+    .qty-select { width: 50px; }
+    .next-btn { background-color: green; color: white; padding: 10px 20px; border: none; cursor: pointer; font-size: 16px; }
+  </style>
+</head>
+<body>
+
+  <h1>Add-On Selection</h1>
+  <div class="container">
+
+    <!-- LEFT PANEL: YOUR SELECTION -->
+    <div class="selection-panel">
+      <h3>Your Selection</h3>
+      <ul id="selected-items">
+        <!-- Filled by JS -->
+      </ul>
+    </div>
+
+    <!-- RIGHT PANEL: ADD-ONS -->
+    <div>
+      <div class="add-on-box" data-name="HEATPRO" data-price="10.00">
+        <h4>HEATPRO ($10.00)</h4>
+        <img src="heatpro.jpg" alt="HEATPRO">
+        Qty:
+        <input type="number" value="1" class="qty-select" />
+        <button class="add-btn">Add</button>
+      </div>
+
+      <div class="add-on-box" data-name="DIY SET" data-price="6.00">
+        <h4>DIY SET - Bento ($6.00)</h4>
+        <img src="diyset.jpg" alt="DIY SET">
+        Qty:
+        <input type="number" value="1" class="qty-select" />
+        <button class="add-btn">Add</button>
+      </div>
+
+      <div class="add-on-box" data-name="VEGETARIAN SET" data-price="8.00">
+        <h4>Vegetarian Bento ($8.00)</h4>
+        <img src="vegetarian.jpg" alt="Vegetarian Set">
+        Qty:
+        <input type="number" value="1" class="qty-select" />
+        <button class="add-btn">Add</button>
+      </div>
+
+      <div class="add-on-box" data-name="DRINKS" data-price="2.00">
+        <h4>Drinks ($2.00)</h4>
+        <img src="drinks.jpg" alt="Drinks">
+        Qty:
+        <input type="number" value="1" class="qty-select" />
+        <button class="add-btn">Add</button>
+      </div>
+
+      <button class="next-btn" onclick="window.location.href='checkout.html'">NEXT ➤</button>
+    </div>
+
+  </div>
+
+  <script>
+    // Load selected main menu items
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const list = document.getElementById('selected-items');
+      list.innerHTML = '';
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} x ${item.quantity}`;
+        list.appendChild(li);
+      });
+    }
+
+    // Add-ons
+    document.querySelectorAll('.add-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const box = button.closest('.add-on-box');
+        const name = box.dataset.name;
+        const qty = parseInt(box.querySelector('.qty-select').value);
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        const existing = cart.find(i => i.name === name);
+        if (existing) {
+          existing.quantity += qty;
+        } else {
+          cart.push({ name, quantity: qty });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${qty} x ${name} added to cart`);
+        loadCart(); // refresh panel
+      });
+    });
+
+    // Init
+    loadCart();
+  </script>
+
+</body>
+</html>
