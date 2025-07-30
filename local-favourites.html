@@ -87,5 +87,38 @@
       <button class="next-btn">NEXT➤</button>
     </div>
   </div>
+  <script>
+  // Store cart in localStorage
+  function addToCart(name, quantity) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    quantity = parseInt(quantity);
+
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+      existing.quantity += quantity;
+    } else {
+      cart.push({ name, quantity });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${quantity} x ${name} added to cart`);
+  }
+
+  // Attach click handlers to all add buttons
+  document.querySelectorAll('.add-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const box = btn.closest('.menu-box');
+      const name = box.getAttribute('data-name');
+      const qtyInput = box.querySelector('.qty');
+      const qty = qtyInput.value;
+      addToCart(name, qty);
+    });
+  });
+
+  // Handle NEXT button click
+  document.querySelector('.next-btn').addEventListener('click', () => {
+    window.location.href = 'add-ons.html';
+  });
+</script>
 </body>
 </html>
