@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Summary</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .container { display: flex; justify-content: space-between; gap: 20px; }
+    .section {
+      flex: 1;
+      border: 1px solid #ccc;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    h2, h3 { margin-top: 0; }
+    .summary-item { margin-bottom: 10px; }
+    table { width: 100%; border-collapse: collapse; }
+    td { padding: 6px; vertical-align: top; }
+    .right-align { text-align: right; }
+    .bold { font-weight: bold; }
+    .total-row { border-top: 1px solid #ccc; font-weight: bold; }
+    .btns { margin-top: 20px; display: flex; gap: 10px; }
+    button {
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .submit-btn {
+      background-color: green;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Your Order Summary</h1>
+
+<div class="container">
+
+  <!-- Left: Delivery Info -->
+  <div class="section">
+    <h2>Summary</h2>
+    <div class="summary-item"><strong>Name:</strong> <span id="name"></span></div>
+    <div class="summary-item"><strong>Contact Number:</strong> <span id="mobile"></span></div>
+    <div class="summary-item"><strong>Email:</strong> <span id="email"></span></div>
+    <div class="summary-item"><strong>Delivery Date:</strong> <span id="delivery_date"></span></div>
+    <div class="summary-item"><strong>Delivery Time:</strong> <span id="delivery_time"></span></div>
+    <div class="summary-item"><strong>Delivery Address:</strong><br/>
+      <span id="delivery_address"></span><br/>
+      <span id="delivery_postal"></span>
+    </div>
+    <div class="summary-item"><strong>Notes:</strong> <span id="notes"></span></div>
+  </div>
+
+  <!-- Right: Items and Pricing -->
+  <div class="section">
+    <h2>Selected Items</h2>
+    <div id="menu-selection">
+      <ul id="item-list"></ul>
+    </div>
+
+    <h3>Cost Summary</h3>
+    <table>
+      <tbody id="cost-rows"></tbody>
+      <tr class="total-row">
+        <td>Total</td>
+        <td class="right-align" id="total-price">$0.00</td>
+      </tr>
+    </table>
+
+    <div class="btns">
+      <button onclick="history.back()">Back</button>
+      <button class="submit-btn" onclick="submitOrder()">Submit</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Load delivery details
+  const delivery = JSON.parse(localStorage.getItem('deliveryDetails')) || {};
+  document.getElementById('name').textContent = delivery.name || '';
+  document.getElementById('email').textContent = delivery.email || '';
+  document.getElementById('mobile').textContent = delivery.mobile || '';
+  document.getElementById('delivery_date').textContent = delivery.delivery_date || '';
+  document.getElementById('delivery_time').textContent = delivery.delivery_time || '';
+  document.getElementById('delivery_address').textContent = delivery.delivery_address || '';
+  document.getElementById('delivery_postal').textContent = delivery.delivery_postal || '';
+  document.getElementById('notes').textContent = delivery.notes || '';
+
+  // Load cart
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const list = document.getElementById('item-list');
+  const cost = document.getElementById('cost-rows');
+  let grandTotal = 0;
+
+  function guessPrice(name) {
+    name = name.toLowerCase();
+    if (name.includes("neo garden")) return 99;
+    if (name.includes("founder") || name.includes("vegetarian")) return 138;
+    if (name.includes("heatpro")) return 10;
+    if (name.includes("diy")) return 6;
+    if (name.includes("drink")) return 2;
+    return 8;
+  }
+
+  cart.forEach(item => {
+    const price = guessPrice(item.name);
+    const subtotal = price * item.quantity;
+    grandTotal += subtotal;
+
+    const li = document.createElement('li');
+    li.textContent = `${item.name} x ${item.quantity}`;
+    list.appendChild(li);
+
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${item.name} x ${item.quantity}</td>
+      <td class="right-align">$${subtotal.toFixed(2)}</td>
+    `;
+    cost.appendChild(row);
+  });
+
+  document.getElementById('total-price').textContent = `$${grandTotal.toFixed(2)}`;
+
+  function submitOrder() {
+    alert("Order submitted successfully!");
+    localStorage.clear();
+    window.location.href = "thankyou.html";
+  }
+</script>
+
+</body>
+</html>
