@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dish Selection</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial; background: #fdfbf8; padding: 2rem; }
+    h1 { color: #e4002b; }
+    .category { margin-bottom: 2rem; }
+    .category h3 { color: #007BFF; margin-bottom: 0.5rem; }
+    .options { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .option label { display: block; background: #fff; padding: 1rem; border: 1px solid #ccc; border-radius: 6px; }
+    input[type="radio"], input[type="checkbox"] { accent-color: #007BFF; }
+  </style>
+</head>
+<body>
+
+  <h1 id="pageTitle">Classic Buffet - Dish Selection</h1>
+
+  <div class="category">
+    <h3>Rice/Noodles</h3>
+    <div class="options">
+      <label><input type="radio" name="rice" value="Yang Chow Fried Rice"> Yang Chow Fried Rice</label>
+      <label><input type="radio" name="rice" value="Fried Hong Kong Mee"> Fried Hong Kong Mee</label>
+    </div>
+  </div>
+
+  <div class="category">
+    <h3>Chicken</h3>
+    <div class="options">
+      <label><input type="radio" name="chicken" value="Honey Chicken"> Honey Chicken</label>
+      <label><input type="radio" name="chicken" value="Black Pepper Chicken"> Black Pepper Chicken</label>
+    </div>
+  </div>
+
+  <div class="category">
+    <h3>Dessert (Select multiple)</h3>
+    <div class="options">
+      <label><input type="checkbox" name="dessert" value="Mini Eclairs"> Mini Eclairs</label>
+      <label><input type="checkbox" name="dessert" value="Chin Chow Jelly"> Chin Chow Jelly</label>
+    </div>
+  </div>
+
+  <script>
+    // Show selected package name in title
+    const urlParams = new URLSearchParams(window.location.search);
+    const packageName = urlParams.get("package");
+    if (packageName) {
+      document.getElementById("pageTitle").textContent += ` (${packageName})`;
+    }
+  </script>
+
+</body>
+</html>
