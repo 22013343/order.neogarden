@@ -4,9 +4,35 @@
   <meta charset="UTF-8">
   <title>Select Classic Buffet Package</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ✅ Matomo Tracking Code -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['trackPageView']); // Pageview when user lands
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="https://tracker.neogroup.com.sg/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '14']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+
   <style>
-    body { font-family: Arial, sans-serif; background: #fdfbf8; padding: 2rem; }
-    h1 { text-align: center; color: #e4002b; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #fdfbf8;
+      padding: 2rem;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #e4002b;
+      margin-bottom: 2rem;
+    }
+
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -14,20 +40,32 @@
       max-width: 1000px;
       margin: auto;
     }
+
     .menu-card {
       background: #fff;
-      padding: 1rem;
+      padding: 1.5rem;
       border: 1px solid #eee;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      cursor: pointer;
-      transition: transform 0.2s;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       text-align: center;
       text-decoration: none;
       color: inherit;
+      transition: transform 0.2s ease;
+      cursor: pointer;
     }
+
     .menu-card:hover {
       transform: translateY(-5px);
+    }
+
+    .menu-card h3 {
+      margin: 0.5rem 0;
+      color: #e4002b;
+    }
+
+    .menu-card p {
+      margin: 0.25rem 0;
+      color: #333;
     }
   </style>
 </head>
@@ -36,17 +74,25 @@
   <h1>Select Your Classic Buffet Package</h1>
 
   <div class="menu-grid">
-    <a href="classic-buffet-dishes.html?package=ValueA" class="menu-card">
+    <a href="classic-buffet-dishes.html?package=ValueA"
+       class="menu-card"
+       onclick="_paq.push(['trackEvent', 'Classic Buffet', 'Select Package', 'Neo’s Value Package A']);">
       <h3>Neo’s Value Package - A</h3>
       <p>8 Courses | min 50 Pax</p>
       <p>$15.99 / $17.43 w/GST</p>
     </a>
-    <a href="classic-buffet-dishes.html?package=SimplicityB" class="menu-card">
+
+    <a href="classic-buffet-dishes.html?package=SimplicityB"
+       class="menu-card"
+       onclick="_paq.push(['trackEvent', 'Classic Buffet', 'Select Package', 'Neo’s Simplicity B']);">
       <h3>Neo’s Simplicity - B</h3>
       <p>9 Courses | min 30 Pax</p>
       <p>$19.99 / $21.79 w/GST</p>
     </a>
-    <a href="classic-buffet-dishes.html?package=DeluxeA" class="menu-card">
+
+    <a href="classic-buffet-dishes.html?package=DeluxeA"
+       class="menu-card"
+       onclick="_paq.push(['trackEvent', 'Classic Buffet', 'Select Package', 'Neo’s Deluxe A']);">
       <h3>Neo’s Deluxe - A</h3>
       <p>9 Courses | min 30 Pax</p>
       <p>$21.99 / $23.97 w/GST</p>
