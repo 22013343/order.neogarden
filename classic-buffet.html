@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Classic Buffet Package</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; background: #fdfbf8; padding: 2rem; }
+    h1 { text-align: center; color: #e4002b; }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .menu-card {
+      background: #fff;
+      padding: 1rem;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: transform 0.2s;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+    }
+    .menu-card:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Select Your Classic Buffet Package</h1>
+
+  <div class="menu-grid">
+    <a href="classic-buffet-dishes.html?package=ValueA" class="menu-card">
+      <h3>Neo’s Value Package - A</h3>
+      <p>8 Courses | min 50 Pax</p>
+      <p>$15.99 / $17.43 w/GST</p>
+    </a>
+    <a href="classic-buffet-dishes.html?package=SimplicityB" class="menu-card">
+      <h3>Neo’s Simplicity - B</h3>
+      <p>9 Courses | min 30 Pax</p>
+      <p>$19.99 / $21.79 w/GST</p>
+    </a>
+    <a href="classic-buffet-dishes.html?package=DeluxeA" class="menu-card">
+      <h3>Neo’s Deluxe - A</h3>
+      <p>9 Courses | min 30 Pax</p>
+      <p>$21.99 / $23.97 w/GST</p>
+    </a>
+  </div>
+
+</body>
+</html>
