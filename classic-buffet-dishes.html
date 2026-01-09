@@ -4,51 +4,95 @@
   <meta charset="UTF-8">
   <title>Dish Selection</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ✅ Matomo Tracking -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['enableLinkTracking']);
+
+    // Get ?package= from URL and use it in document title and tracking
+    const params = new URLSearchParams(window.location.search);
+    const pkg = params.get('package') || 'Unknown';
+
+    _paq.push(['setDocumentTitle', 'Classic Buffet – ' + pkg]);
+
+    // Optional event to log that user opened dish selection page
+    _paq.push(['trackEvent', 'Classic Buffet', 'View Dish Selection', pkg]);
+
+    _paq.push(['trackPageView']);
+
+    (function() {
+      var u="https://tracker.neogroup.com.sg/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '14']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+
   <style>
-    body { font-family: Arial; background: #fdfbf8; padding: 2rem; }
+    body { font-family: Arial; background: #fdfbf8; padding: 2rem; margin: 0; }
     h1 { color: #e4002b; }
     .category { margin-bottom: 2rem; }
     .category h3 { color: #007BFF; margin-bottom: 0.5rem; }
     .options { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .option label { display: block; background: #fff; padding: 1rem; border: 1px solid #ccc; border-radius: 6px; }
-    input[type="radio"], input[type="checkbox"] { accent-color: #007BFF; }
+    .option label {
+      display: block;
+      background: #fff;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    input[type="radio"], input[type="checkbox"] {
+      accent-color: #007BFF;
+      margin-right: 6px;
+    }
   </style>
 </head>
 <body>
 
-  <h1 id="pageTitle">Classic Buffet - Dish Selection</h1>
+  <h1 id="pageTitle">Classic Buffet – Dish Selection</h1>
 
+  <!-- RICE -->
   <div class="category">
     <h3>Rice/Noodles</h3>
     <div class="options">
-      <label><input type="radio" name="rice" value="Yang Chow Fried Rice"> Yang Chow Fried Rice</label>
-      <label><input type="radio" name="rice" value="Fried Hong Kong Mee"> Fried Hong Kong Mee</label>
+      <label class="option"><input type="radio" name="rice" value="Yang Chow Fried Rice"> Yang Chow Fried Rice</label>
+      <label class="option"><input type="radio" name="rice" value="Fried Hong Kong Mee"> Fried Hong Kong Mee</label>
     </div>
   </div>
 
+  <!-- CHICKEN -->
   <div class="category">
     <h3>Chicken</h3>
     <div class="options">
-      <label><input type="radio" name="chicken" value="Honey Chicken"> Honey Chicken</label>
-      <label><input type="radio" name="chicken" value="Black Pepper Chicken"> Black Pepper Chicken</label>
+      <label class="option"><input type="radio" name="chicken" value="Honey Chicken"> Honey Chicken</label>
+      <label class="option"><input type="radio" name="chicken" value="Black Pepper Chicken"> Black Pepper Chicken</label>
     </div>
   </div>
 
+  <!-- DESSERTS -->
   <div class="category">
-    <h3>Dessert (Select multiple)</h3>
+    <h3>Desserts (Select Multiple)</h3>
     <div class="options">
-      <label><input type="checkbox" name="dessert" value="Mini Eclairs"> Mini Eclairs</label>
-      <label><input type="checkbox" name="dessert" value="Chin Chow Jelly"> Chin Chow Jelly</label>
+      <label class="option"><input type="checkbox" name="dessert" value="Mini Eclairs"> Mini Eclairs</label>
+      <label class="option"><input type="checkbox" name="dessert" value="Chin Chow Jelly"> Chin Chow Jelly</label>
     </div>
   </div>
 
   <script>
-    // Show selected package name in title
-    const urlParams = new URLSearchParams(window.location.search);
-    const packageName = urlParams.get("package");
-    if (packageName) {
-      document.getElementById("pageTitle").textContent += ` (${packageName})`;
-    }
+    // Dish tracking for all radios and checkboxes
+    document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(input => {
+      input.addEventListener('change', () => {
+        const dishName = input.value;
+        const action = input.type === 'checkbox'
+          ? (input.checked ? 'Selected' : 'Deselected')
+          : 'Selected'; // radio is always selection
+
+        _paq.push(['trackEvent', 'Dish Selection', action, dishName]);
+      });
+    });
   </script>
 
 </body>
