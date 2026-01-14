@@ -36,12 +36,27 @@
       margin: 2rem auto;
     }
 
-    .radio-success, .checkbox-success {
+    .menu-category {
       background: #fff;
       padding: 1rem;
+      margin-bottom: 2rem;
       border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .spn_category_name {
+      font-size: 1.2rem;
+      font-weight: bold;
       margin-bottom: 1rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      color: #333;
+    }
+
+    .radio-success, .checkbox-success {
+      background: #fefefe;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -58,30 +73,32 @@
   <h1>Select Dishes for Your Package</h1>
 
   <div class="menu-section" id="menuSelectSection">
-    <!-- Dishes will be loaded here -->
+    <!-- Categories and dishes will be loaded here -->
   </div>
 
   <script>
-    // Simulated "backend" dish data by package
+    // ✅ Simulated backend dishes grouped by category
     const dishData = {
-      ValueA: [
-        { id: "dish_101", name: "Stir-Fried Vegetables", type: "radio", group: "main" },
-        { id: "dish_102", name: "Chicken Curry", type: "radio", group: "main" },
-        { id: "dish_201", name: "Spring Rolls", type: "checkbox", group: "addons" },
-        { id: "dish_202", name: "Fruit Platter", type: "checkbox", group: "addons" }
-      ],
-      SimplicityB: [
-        { id: "dish_103", name: "Lemon Fish", type: "radio", group: "main" },
-        { id: "dish_104", name: "Mutton Rendang", type: "radio", group: "main" },
-        { id: "dish_203", name: "Ice Jelly", type: "checkbox", group: "addons" },
-        { id: "dish_204", name: "Chocolate Éclairs", type: "checkbox", group: "addons" }
-      ],
-      DeluxeA: [
-        { id: "dish_105", name: "Roast Duck", type: "radio", group: "main" },
-        { id: "dish_106", name: "Black Pepper Prawns", type: "radio", group: "main" },
-        { id: "dish_205", name: "Mango Pudding", type: "checkbox", group: "addons" },
-        { id: "dish_206", name: "Mini Cheesecake", type: "checkbox", group: "addons" }
-      ]
+      ValueA: {
+        "Main Course": [
+          { id: "dish_101", name: "Stir-Fried Vegetables", type: "radio", group: "main" },
+          { id: "dish_102", name: "Chicken Curry", type: "radio", group: "main" }
+        ],
+        "Add-Ons": [
+          { id: "dish_201", name: "Spring Rolls", type: "checkbox", group: "addons" },
+          { id: "dish_202", name: "Fruit Platter", type: "checkbox", group: "addons" }
+        ]
+      },
+      SimplicityB: {
+        "Main Course": [
+          { id: "dish_103", name: "Lemon Fish", type: "radio", group: "main" },
+          { id: "dish_104", name: "Mutton Rendang", type: "radio", group: "main" }
+        ],
+        "Desserts": [
+          { id: "dish_203", name: "Ice Jelly", type: "checkbox", group: "addons" },
+          { id: "dish_204", name: "Chocolate Éclairs", type: "checkbox", group: "addons" }
+        ]
+      }
     };
 
     function getSelectedPackage() {
@@ -91,29 +108,42 @@
 
     function renderDishes(packageName) {
       const container = document.getElementById('menuSelectSection');
-      const dishes = dishData[packageName] || [];
+      const categories = dishData[packageName] || {};
 
-      dishes.forEach(dish => {
-        const wrapper = document.createElement('div');
-        wrapper.className = dish.type === 'radio' ? 'radio radio-success' : 'checkbox checkbox-success';
+      Object.entries(categories).forEach(([categoryName, dishes]) => {
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'menu-category';
 
-        const input = document.createElement('input');
-        input.className = 'valid';
-        input.type = dish.type;
-        input.name = dish.group;
-        input.value = dish.id;
+        const categoryTitle = document.createElement('div');
+        categoryTitle.className = 'spn_category_name';
+        categoryTitle.textContent = categoryName;
 
-        const label = document.createElement('label');
-        label.className = 'dish-label';
-        label.textContent = dish.name;
+        categoryDiv.appendChild(categoryTitle);
 
-        wrapper.appendChild(label);
-        wrapper.appendChild(input);
-        container.appendChild(wrapper);
+        dishes.forEach(dish => {
+          const wrapper = document.createElement('div');
+          wrapper.className = dish.type === 'radio' ? 'radio radio-success' : 'checkbox checkbox-success';
+
+          const input = document.createElement('input');
+          input.className = 'valid';
+          input.type = dish.type;
+          input.name = dish.group;
+          input.value = dish.id;
+
+          const label = document.createElement('label');
+          label.className = 'dish-label';
+          label.textContent = dish.name;
+
+          wrapper.appendChild(label);
+          wrapper.appendChild(input);
+          categoryDiv.appendChild(wrapper);
+        });
+
+        container.appendChild(categoryDiv);
       });
     }
 
-    // Matomo tracking functions (same as your original setup)
+    // ✅ Matomo helpers
     function pushDataToMatomo(dishId, dishName, categoryName, price) {
       _paq.push(['setEcommerceView', dishId, dishName, categoryName, price || 0]);
       _paq.push(['trackPageView']);
@@ -131,7 +161,17 @@
     }
 
     function getCategoryTitle(input) {
-      return 'Classic Buffet Dish';
+      const wrapper = input.closest('.menu-category');
+      const cat1 = wrapper && wrapper.querySelector('.spn_category_name')
+        ? wrapper.querySelector('.spn_category_name').innerText.trim()
+        : '';
+      if (cat1) return cat1;
+
+      const prev = input.closest('li') ? input.closest('li').previousElementSibling : null;
+      const cat2 = prev ? (prev.innerText || '').trim() : '';
+      if (cat2) return cat2;
+
+      return 'Unknown Category';
     }
 
     function handleRadioInteraction(inputElement, action) {
@@ -202,7 +242,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       const pkg = getSelectedPackage();
-      renderDishes(pkg); // Simulate "backend" load
+      renderDishes(pkg);
       initPrevSelectedRadios();
       attachRadioTracking();
       attachCheckboxTracking();
