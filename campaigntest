@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neo Garden - CNY 2026 Promo</title>
+
+  <!-- Google Analytics (replace G-XXXXXXX with your GA Measurement ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+
+  <!-- Matomo Tracking (replace with your siteId if different) -->
+  <script>
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="https://tracker.neogroup.com.sg/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '3']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8f0;
+      padding: 2rem;
+      text-align: center;
+    }
+    .campaign-box {
+      background-color: #ffe0b2;
+      border-radius: 10px;
+      padding: 2rem;
+      margin: auto;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    a.cta-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 1rem 2rem;
+      background-color: #d32f2f;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    a.cta-button:hover {
+      background-color: #b71c1c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="campaign-box">
+    <h1>🎉 CNY 2026 Buffet Promo!</h1>
+    <p>Celebrate with Neo Garden’s special CNY buffet packages.</p>
+    <p>Enjoy up to 20% off when you order online today.</p>
+
+    <!-- Call to action with UTM-tracked link -->
+    <a
+      href="https://order.neogarden.com.sg/menu?utm_source=facebook&utm_medium=ad&utm_campaign=cny2026_test"
+      class="cta-button"
+      onclick="_paq.push(['trackEvent', 'Campaign', 'Click', 'CNY2026 Facebook Ad']);">
+      Order Now
+    </a>
+  </div>
+
+</body>
+</html>
