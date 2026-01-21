@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Dummy Campaign Page - CNY 2026</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neo Garden - CNY 2026 Promo</title>
 
   <!-- Google Analytics (replace G-XXXXXXX with your GA Measurement ID) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
@@ -14,17 +14,17 @@
     gtag('config', 'G-XXXXXXX');
   </script>
 
-  <!-- Matomo Tracking (replace with your siteId if different) -->
+  <!-- Matomo Tracking (Site ID: 15) -->
   <script>
     var _paq = window._paq = window._paq || [];
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
-    (function() {
-      var u="https://tracker.neogroup.com.sg/";
-      _paq.push(['setTrackerUrl', u+'matomo.php']);
-      _paq.push(['setSiteId', '3']);
-      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    (function () {
+      var u = "https://tracker.neogroup.com.sg/";
+      _paq.push(['setTrackerUrl', u + 'matomo.php']);
+      _paq.push(['setSiteId', '15']);
+      var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+      g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
     })();
   </script>
 
@@ -32,47 +32,39 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #fff8f0;
+      margin: 0;
       padding: 2rem;
       text-align: center;
     }
-    .campaign-box {
-      background-color: #ffe0b2;
-      border-radius: 10px;
-      padding: 2rem;
-      margin: auto;
-      max-width: 600px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    h1 {
+      color: #c8102e;
     }
-    a.cta-button {
+    .cta-button {
       display: inline-block;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
+      background-color: #c8102e;
+      color: white;
       padding: 1rem 2rem;
-      background-color: #d32f2f;
-      color: #fff;
-      text-decoration: none;
+      font-size: 1.2rem;
+      border: none;
       border-radius: 5px;
-      font-weight: bold;
+      text-decoration: none;
     }
-    a.cta-button:hover {
-      background-color: #b71c1c;
+    .cta-button:hover {
+      background-color: #a30c24;
     }
   </style>
 </head>
 <body>
 
-  <div class="campaign-box">
-    <h1>🎉 CNY 2026 Buffet Promo!</h1>
-    <p>Celebrate with Neo Garden’s special CNY buffet packages.</p>
-    <p>Enjoy up to 20% off when you order online today.</p>
+  <h1>🧧 CNY Catering 2026 - Limited Time Offer!</h1>
+  <p>Order your festive buffet now and enjoy exclusive early-bird promotions.</p>
 
-    <!-- Call to action with UTM-tracked link -->
-    <a
-      href="https://order.neogarden.com.sg/menu?utm_source=facebook&utm_medium=ad&utm_campaign=cny2026_test"
-      class="cta-button"
-      onclick="_paq.push(['trackEvent', 'Campaign', 'Click', 'CNY2026 Facebook Ad']);">
-      Order Now
-    </a>
-  </div>
+  <a class="cta-button" 
+     href="https://order.neogarden.com.sg/menu?utm_source=facebook&utm_medium=ad&utm_campaign=cny2026_test"
+     onclick="_paq.push(['trackEvent', 'Campaign', 'Click CTA', 'CNY 2026 Facebook Ad']);">
+    View Buffet Packages
+  </a>
 
 </body>
 </html>
